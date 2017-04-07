@@ -20,8 +20,14 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	// Find the owning actor
+	AActor* Owner = GetOwner();
+
+	// Create a rotator
+	FRotator NewRotation = FRotator(0.f, -60.f, 0.f);
+
+	// Set the rotation
+	Owner->SetActorRotation(NewRotation);
 }
 
 
@@ -32,4 +38,3 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 
 	// ...
 }
-
