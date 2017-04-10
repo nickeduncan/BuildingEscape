@@ -18,7 +18,9 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+
 	void OpenDoor();
+	void CloseDoor();
 
 public:
 	// Called every frame
@@ -26,11 +28,17 @@ public:
 
 
 private:
-	UPROPERTY(VisibleAnywhere)
-	float OpenAngle = 90.f;
+	UPROPERTY(EditAnywhere)
+	float OpenAngle = -90.f;
 
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PressurePlate;
 
-	AActor* ActorThatOpens ; // remember pawn inherits from Actor
+	UPROPERTY(EditAnywhere)
+	float DoorCloseDelay = 1.f;
+
+	float LastDoorOpenTime;
+
+	AActor* ActorThatOpens; // remember pawn inherits from Actor
+	AActor* Owner; // The owning door
 };
